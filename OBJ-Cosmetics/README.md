@@ -1,6 +1,6 @@
 # Obj Cosmetics
 
-### First you need a OBJ loader that was made by Blunderchpis
+### The Original OBJ Loader:
 
 ### https://github.com/Blunderchips/LWJGL-OBJ-Loader
 
