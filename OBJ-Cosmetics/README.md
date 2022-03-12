@@ -68,7 +68,7 @@ public void render(Entity entityIn, float p_78088_2_, float p_78088_3_, float p_
                 for (CosmeticsHandler handler : CosmeticsManager.cosmetics) {
                     if (handler.getType() == CosmeticsHandler.CosmeticsType.HAT) {
                         handler.render(entityIn, this.bipedHead);
-                    } else {
+                    } else if (handler.getType() == CosmeticsHandler.CosmeticsType.BODY) {
                         handler.render(entityIn, this.bipedBody);
                     }
                 }
