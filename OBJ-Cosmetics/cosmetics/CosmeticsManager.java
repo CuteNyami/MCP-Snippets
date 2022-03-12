@@ -10,7 +10,7 @@ public class CosmeticsManager {
 
     public static List<CosmeticsHandler> cosmetics = new ArrayList<>();
 
-    public static void registerCosmetic(CosmeticsHandler... handlers) {
+    public static void registerCosmetics(CosmeticsHandler... handlers) {
         cosmetics.addAll(Arrays.asList(handlers));
     }
 
