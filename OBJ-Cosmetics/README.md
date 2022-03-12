@@ -19,3 +19,19 @@ public OBJLoader getObjLoader() {
     return objLoader;
 }
 ````
+
+### then you need to register your Cosmetics
+
+````java 
+private OBJLoader objLoader;
+
+public void startup() {
+    objLoader = new OBJLoader();
+
+    CosmeticsManager.registerCosmetic(new Bandana());
+}
+
+public OBJLoader getObjLoader() {
+    return objLoader;
+}
+````
