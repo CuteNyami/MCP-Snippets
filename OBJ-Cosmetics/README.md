@@ -79,4 +79,4 @@ public void render(Entity entityIn, float p_78088_2_, float p_78088_3_, float p_
     }
 ````
 
-### You need to credit me :3
+### You don't need to credit me :3
