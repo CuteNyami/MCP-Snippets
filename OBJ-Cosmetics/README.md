@@ -6,7 +6,7 @@
 
 ## How to use:
 
-### first create a new instance of the OBJLoader class
+### first create a new instance of the OBJLoader class in your Main
 
 ````java 
 private OBJLoader objLoader;
