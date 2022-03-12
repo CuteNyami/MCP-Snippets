@@ -28,7 +28,7 @@ private OBJLoader objLoader;
 public void startup() {
     objLoader = new OBJLoader();
 
-    CosmeticsManager.registerCosmetic(new Bandana());
+    CosmeticsManager.registerCosmetics(new Bandana());
 }
 
 public OBJLoader getObjLoader() {
