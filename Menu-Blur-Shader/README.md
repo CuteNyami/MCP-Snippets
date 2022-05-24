@@ -1,4 +1,4 @@
-## Menu Blur Shader
+# Menu Blur Shader
 
 ### How can I load the shader?
 * Minecraft.getMinecraft().entityRenderer.loadShader(new ResourceLocation("shaders/post/menu_blur.json"));
