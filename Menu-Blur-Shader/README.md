@@ -1,10 +1,14 @@
 # Menu Blur Shader
 
 ### How can I load the shader?
-* Minecraft.getMinecraft().entityRenderer.loadShader(new ResourceLocation("shaders/post/menu_blur.json"));
+```java
+Minecraft.getMinecraft().entityRenderer.loadShader(new ResourceLocation("shaders/post/menu_blur.json"));
+```
 
 ### How can I unload the shader?
-* Minecraft.getMinecraft().entityRenderer.stopUseShader();
+```java
+Minecraft.getMinecraft().entityRenderer.stopUseShader();
+```
 
 ### Example gui with the blur shader:
 ```java
