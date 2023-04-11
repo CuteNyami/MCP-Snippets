@@ -1,5 +1,3 @@
-import lombok.Getter;
-import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -17,10 +15,8 @@ import java.util.regex.Pattern;
 
 public class FontRenderer {
 
-    @Getter
     private final String path;
 
-    @Getter
     private final float size;
 
     public final int FONT_HEIGHT = 9;
@@ -71,18 +67,21 @@ public class FontRenderer {
         drawString(text, x + 1.0F, y + 1.0F, Color.BLACK);
         drawString(text, x - ((int) getWidth(text) >> 1), y, color);
     }
-
-    @SneakyThrows
+    
     public void drawString(String text, float x, float y, Color color) {
         ScaledResolution resolution = new ScaledResolution(Minecraft.getMinecraft());
 
         if (text == null) return;
         if (resolution.getScaleFactor() != this.prevScaleFactor) {
-            this.prevScaleFactor = resolution.getScaleFactor();
-            this.unicodeFont = new UnicodeFont(this.getFontFromInput(path).deriveFont(this.size * this.prevScaleFactor / 2.0f));
-            this.unicodeFont.addAsciiGlyphs();
-            this.unicodeFont.getEffects().add(colorEffect);
-            this.unicodeFont.loadGlyphs();
+            try {
+                this.prevScaleFactor = resolution.getScaleFactor();
+                this.unicodeFont = new UnicodeFont(this.getFontFromInput(path).deriveFont(this.size * this.prevScaleFactor / 2.0f));
+                this.unicodeFont.addAsciiGlyphs();
+                this.unicodeFont.getEffects().add(colorEffect);
+                this.unicodeFont.loadGlyphs();
+            } catch (SlickException | IOException | FontFormatException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         this.antiAliasingFactor = resolution.getScaleFactor();
@@ -187,8 +186,16 @@ public class FontRenderer {
         return this.cachedStringWidth.computeIfAbsent(text, e -> this.unicodeFont.getWidth(textWithOutColorCodes) / this.antiAliasingFactor);
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public float getSize() {
+        return size;
+    }
+
     private Font getFontFromInput(String path) throws IOException, FontFormatException {
-        return Font.createFont(0, Objects.requireNonNull(FontRenderer.class.getResourceAsStream(path)));
+        return Font.createFont(0, Objects.requireNonNull(FontRenderer.class.getClassLoader().getResourceAsStream(path)));
     }
 
     public float getHeight(final String s) {
